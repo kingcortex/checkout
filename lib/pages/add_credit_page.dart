@@ -278,17 +278,16 @@ class _AddCreditCardPageState extends State<AddCreditCardPage>
 
   @override
   void dispose() {
-    // Dispose des AnimationControllers
     _controller.dispose();
 
-    // Dispose des FocusNodes
+ 
     _numberNode.dispose();
     _nameNode.dispose();
     _mounthNode.dispose();
     _yearfocusNode.dispose();
     _cvvNode.dispose();
 
-    // Dispose des TextEditingControllers
+  
     _numberController.dispose();
     _nameController.dispose();
     _mounthController.dispose();
@@ -672,7 +671,7 @@ class _AddCreditCardPageState extends State<AddCreditCardPage>
   }
 }
 
-/// Construit une liste de widgets pour afficher chaque caractère
+
 Either<List<Widget>, Widget> _buildOtherText(String input, {String? hintText}) {
   TextStyle style = GoogleFonts.spaceGrotesk(
     color: Color(0xffffffff),
@@ -690,7 +689,7 @@ Either<List<Widget>, Widget> _buildOtherText(String input, {String? hintText}) {
   }
 
   for (int i = 0; i < totalLength; i++) {
-    // Si le caractère existe dans l'input
+    
     if (i < input.length) {
       // Le dernier caractère saisi est affiché
       if (i == input.length - 1) {
@@ -702,11 +701,11 @@ Either<List<Widget>, Widget> _buildOtherText(String input, {String? hintText}) {
         characters.add(_buildAnimatedCharacter(input[i], 20, style: style));
       }
     } else {
-      // Remplir avec des astérisques masqués
+      
       characters.add(_buildAnimatedCharacter('', 10));
     }
 
-    // // Ajouter un espace visuel tous les 4 caractères
+    //
     // if ((i + 1) % 4 == 0 && i != totalLength - 1) {
     //   characters.add(const SizedBox(width: 8));
     // }
@@ -722,23 +721,21 @@ List<Widget> _buildMaskedText(String input, {int? length, TextStyle? style}) {
   print(style);
 
   for (int i = 0; i < totalLength; i++) {
-    // Si le caractère existe dans l'input
+    
     if (i < input.length) {
-      // Le dernier caractère saisi est affiché
       if (i == input.length - 1) {
         characters.add(
           _buildAnimatedCharacter(input[i], 20, style: style),
         );
       } else {
-        // Masquer les autres caractères
         characters.add(_buildAnimatedCharacter(input[i], 20, style: style));
       }
     } else {
-      // Remplir avec des astérisques masqués
+      
       characters.add(_buildAnimatedCharacter('*', 22, style: style));
     }
 
-    // Ajouter un espace visuel tous les 4 caractères
+   
     if ((i + 1) % 4 == 0 && i != totalLength - 1) {
       characters.add(const SizedBox(width: 8));
     }
